@@ -18,7 +18,6 @@ import { useEffect } from "react";
 import Loading from "../Loading/Loading";
 import axios from "axios";
 import { numberWithCommas } from "../../utils/FormatPrice";
-import { Dropdown } from "react-bootstrap";
 import ProductDetailModal from "../DetailsModal/ProductDetailModal";
 
 
@@ -138,7 +137,6 @@ export default function ProductTable() {
                   <TableCell align="left">description</TableCell>
                   <TableCell align="left">Category</TableCell>
                   <TableCell align="left">Trademark</TableCell>
-                  <TableCell align="left">Color-Size</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
@@ -157,21 +155,6 @@ export default function ProductTable() {
                     <TableCell align="left">{product.name}</TableCell>
                     <TableCell align="left">{product.r_category.name}</TableCell>
                     <TableCell align="left">{product.r_trademark.name}</TableCell>
-                    <TableCell align="left">
-                      {
-                        <Dropdown>
-                          <Dropdown.Toggle variant="success" id="dropdown-basic">
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu>
-                            {
-                              product.r_productDetails.map(detail => (
-                                <Dropdown.Item key={detail._id}>{`${detail.color}-${detail.size}`}</Dropdown.Item>
-                              ))
-                            }
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      }
-                    </TableCell>
                     <TableCell align="left" className="Details">
                       <DetailsDropdown
                         clickedElement={product}

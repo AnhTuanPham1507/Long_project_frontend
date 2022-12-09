@@ -66,5 +66,25 @@ const userAPI = {
         })
 }
 
+const importOrderAPI = {
+    getAll: () => axi.get(`/importOrder`),
+    create: (formData,token) => axi.post(`/importOrder`,
+        formData,
+        {
+            headers: {
+                'Content-Type': `application/json`,
+                'x-access-token': token
+            }
+        }),
+    update: (id, formData) => axi.put(`/importOrder/${id}`,
+        formData,
+        {
+            headers: {
+                'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
+            }
+        }),
+    delete: (id) => axi.delete(`/importOrder/${id}`),
+}
 
-export { categoryAPI, productAPI, trademarkAPI, userAPI, productDetailAPI };
+
+export { categoryAPI, productAPI, trademarkAPI, userAPI, productDetailAPI, importOrderAPI };

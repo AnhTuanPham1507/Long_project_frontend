@@ -17,15 +17,19 @@ export const SidebarData = [
   },
   {
     icon: UilPackage,
-    heading: "Trademark",
+    heading: "Trademarks",
     to: "/trademarks"
   },
   {
     icon: UilPackage,
-    heading: "Product",
+    heading: "Products",
     to: "/products"
   },
-
+  {
+    icon: UilPackage,
+    heading: "Import Orders",
+    to: "/importOrders"
+  },
 ];
 
 export const ProductDetailColors = [

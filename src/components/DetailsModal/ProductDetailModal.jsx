@@ -76,6 +76,7 @@ function ProductDetailModal(props) {
                                                 <Card.Body>
                                                     <Card.Title>{`Color: ${detail.color}`}</Card.Title>
                                                     <Card.Title>{`Size: ${detail.size}`}</Card.Title>
+                                                    <Card.Title>{`Quantity: ${detail.r_consignments.quantity}`}</Card.Title>
                                                     <Button onClick={() => {
                                                         setClickedElement(detail)
                                                         setIsShowUpdateForm(true)
