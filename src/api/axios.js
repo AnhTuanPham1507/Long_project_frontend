@@ -54,6 +54,21 @@ const productDetailAPI = {
 
 const trademarkAPI = {
     getAll: () => axi.get(`/trademark`),
+    create: (formData) => axi.post(`/trademark`,
+        formData,
+        {
+            headers: {
+                'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
+            }
+        }),
+    update: (id, formData) => axi.put(`/trademark/${id}`,
+        formData,
+        {
+            headers: {
+                'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
+            }
+        }),
+    delete: (id) => axi.delete(`/trademark/${id}`),
 }
 
 const userAPI = {
