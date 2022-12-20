@@ -16,8 +16,10 @@ import { productAPI } from "../../api/axios";
 import UpdateProductModal from "../UpdateModal/UpdateProductModal";
 import { useEffect } from "react";
 import Loading from "../Loading/Loading";
+import DeleteProductModal from"../DeleteModal/DeleteProductModal";
 import axios from "axios";
 import { numberWithCommas } from "../../utils/FormatPrice";
+import { Dropdown } from "react-bootstrap";
 import ProductDetailModal from "../DetailsModal/ProductDetailModal";
 
 
@@ -27,12 +29,14 @@ export default function ProductTable() {
 
   const [isShowCreateForm, setIsShowCreateForm] = useState(false)
   const [isShowUpdateForm, setIsShowUpdateForm] = useState(false)
+  const [isShowDeleteForm, setIsShowDeleteForm] = useState(false)
   const [isShowDetailModal, setIsShowDetailModal] = useState(false)
 
   const [clickedElement, setClickedElement] = useState(null)
 
   const [errorCreatingMessage, setErrorCreatingMessage] = useState(null)
   const [errorUpdatingMessage, setErrorUpdatingMessage] = useState(null)
+  
 
   useEffect(() => {
     setIsLoading(true)
@@ -110,6 +114,40 @@ export default function ProductTable() {
     setProducts(newProducts)
   }
 
+  function handleCreatingProductDetail(createdProductDetail) {
+    const newProducts = products.map(
+      p => {
+        if(p._id === createdProductDetail.r_product){
+          const details = [...p.r_productDetails,createdProductDetail]
+          const newProduct = ({...p,r_productDetails: details})
+          setClickedElement(newProduct)
+          return newProduct
+        }
+        return p
+      })
+      setProducts(newProducts)
+  }
+
+  async function handleDeleteProduct() {
+    setIsShowDeleteForm(false)
+    setIsLoading(true)
+    try {
+      await productAPI.delete(clickedElement._id)
+      const newProducts = products.filter(p => p._id !== clickedElement._id)
+      setProducts(newProducts)
+      setClickedElement(null)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error)
+        alert(error.response.data.message)
+        return
+      }
+      alert(error.toString())
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     isLoading ?
       <Loading /> :
@@ -134,9 +172,10 @@ export default function ProductTable() {
                   <TableCell>ID</TableCell>
                   <TableCell align="left">Name</TableCell>
                   <TableCell align="left">Price</TableCell>
-                  <TableCell align="left">description</TableCell>
+                  <TableCell align="left">Description</TableCell>
                   <TableCell align="left">Category</TableCell>
                   <TableCell align="left">Trademark</TableCell>
+                  <TableCell align="left">Color-Size</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
@@ -152,9 +191,24 @@ export default function ProductTable() {
                     </TableCell>
                     <TableCell align="left">{product.name}</TableCell>
                     <TableCell align="left">{numberWithCommas(product.price)}</TableCell>
-                    <TableCell align="left">{product.name}</TableCell>
+                    <TableCell align="left">{product.description}</TableCell>
                     <TableCell align="left">{product.r_category.name}</TableCell>
                     <TableCell align="left">{product.r_trademark.name}</TableCell>
+                    <TableCell align="left">
+                      {
+                        <Dropdown>
+                          <Dropdown.Toggle variant="success" id="dropdown-basic">
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu>
+                            {
+                              product.r_productDetails.map(detail => (
+                                <Dropdown.Item key={detail._id}>{`${detail.color}-${detail.size}`}</Dropdown.Item>
+                              ))
+                            }
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      }
+                    </TableCell>
                     <TableCell align="left" className="Details">
                       <DetailsDropdown
                         clickedElement={product}
@@ -162,9 +216,17 @@ export default function ProductTable() {
                           setClickedElement(product)
                           setIsShowDetailModal(true)
                         }}
+                        onUpdatingElementClick={(updatingProduct) => {
+                        setClickedElement(updatingProduct)
+                        setIsShowUpdateForm(true)
+                        }}
                         setUpdatingElement={(updatingProduct) => {
                           setClickedElement(updatingProduct)
                           setIsShowUpdateForm(true)
+                        }}
+                        onDeletingElementClick={(deletingProduct) => {
+                          setClickedElement(deletingProduct)
+                          setIsShowDeleteForm(true)
                         }}
                       />
                     </TableCell>
@@ -190,9 +252,16 @@ export default function ProductTable() {
         />
         <ProductDetailModal
           onUpdatingProductDetail={handleUpdatingProductDetail}
+          onCreatingProductDetail={handleCreatingProductDetail}
           isShow={isShowDetailModal}
           product={clickedElement}
           onClose={() => { setIsShowDetailModal(false) }}
+        />
+        <DeleteProductModal
+          isShow={isShowDeleteForm}
+          onClose={() => { setIsShowDeleteForm(false) }}
+          onDeleteProduct={handleDeleteProduct}
+          deletingProduct={clickedElement}
         />
       </>
   );
