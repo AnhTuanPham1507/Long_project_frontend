@@ -16,7 +16,6 @@ function CreateImportOrderModal(props) {
 
     useEffect(() => {
         const tempTotalPrice = details.reduce((total, detail) => total + detail.price * detail.quantity, 0)
-        console.log(tempTotalPrice)
         setTotalPrice(tempTotalPrice)
     }, [details])
 
@@ -30,9 +29,10 @@ function CreateImportOrderModal(props) {
         if(onCreateImportOrder){
             const tempDetails = details.map(detail => {
                 return {
-                    r_productDetail: detail._id,
+                    r_product: detail._id,
                     quantity: detail.quantity,
                     price: detail.price,
+                    size: detail.size,
                     consignmentStatus: detail.consignmentStatus
                 }
             })

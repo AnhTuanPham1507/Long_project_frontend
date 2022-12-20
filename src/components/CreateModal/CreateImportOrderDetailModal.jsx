@@ -1,16 +1,14 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
-import { Alert } from '@mui/material';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { productAPI } from '../../api/axios';
-
+import SIZEENUM from '../../enums/size'
 
 function CreateImportOrderDetailModaldal(props) {
     const [products, setProducts] = useState([])
     const [indexActiveProduct, setIndexActiveProduct] = useState(0)
-    const [details, setDetails] = useState([])
-    const [indexActiveDetail, setIndexActiveDetail] = useState(0)
+    const [size, setSize] = useState(Object.values(SIZEENUM)[0])
     const [quantity, setQuantity] = useState(1)
     const [price, setPrice] = useState(1)
     const [consignmentStatus, setConsignmentStatus] = useState("new")
@@ -30,11 +28,6 @@ function CreateImportOrderDetailModaldal(props) {
         getStartingProducts()
     }, [])
 
-    useEffect(() => {
-        if (products[indexActiveProduct] !== undefined)
-            setDetails(products[indexActiveProduct].r_productDetails)
-    }, [indexActiveProduct, products])
-
     function handleClose() {
         if (onClose)
             onClose()
@@ -44,14 +37,13 @@ function CreateImportOrderDetailModaldal(props) {
         e.preventDefault()
         if (onAddMoreDetail) {
             const activeProduct = products[indexActiveProduct]
-            const activeProductDetail = activeProduct.r_productDetails[indexActiveDetail]
-            console.log(activeProductDetail)
             onAddMoreDetail({
-                _id: activeProductDetail._id,
-                name: `${activeProduct.name} ${activeProductDetail.color} - Size: ${activeProductDetail.size}`,
+                _id: activeProduct._id,
+                name: `${activeProduct.name} - Size: ${size}`,
                 quantity: parseInt(quantity),
                 price: parseInt(price),
-                consignmentStatus
+                consignmentStatus,
+                size
             })
         }
     }
@@ -65,7 +57,7 @@ function CreateImportOrderDetailModaldal(props) {
                 <Modal.Body>
                     <Form.Group className="mb-3">
                         <Form.Label>Product</Form.Label>
-                        <Form.Select onChange={(e) => { console.log(e.target.value); setIndexActiveProduct(e.target.value) }}>
+                        <Form.Select onChange={(e) => { setIndexActiveProduct(e.target.value) }}>
                             {
                                 products.map((product, index) => (
                                     <option key={product._id} value={index}>{product.name}</option>
@@ -74,12 +66,12 @@ function CreateImportOrderDetailModaldal(props) {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Choose Size And Color</Form.Label>
-                        <Form.Select onChange={(e) => { setIndexActiveDetail(e.target.value) }}>
+                        <Form.Label>Choose Size</Form.Label>
+                        <Form.Select  onChange={(e) => { setSize(e.target.value) }}>
                             {
-                                details.map((detail, index) => (
-                                    <option key={detail._id} value={index}>{detail.color} - {detail.size}</option>
-                                ))
+                                Object.values(SIZEENUM).map((size,index) =>
+                                    <option key={index} value={size}>{size}</option>
+                                )
                             }
                         </Form.Select>
                     </Form.Group>
@@ -94,8 +86,8 @@ function CreateImportOrderDetailModaldal(props) {
                     <Form.Group className="mb-3">
                         <Form.Label>Status</Form.Label>
                         <Form.Select onChange={(e) => { setConsignmentStatus(e.target.value) }}>
-                            <option  value={"new"}>New</option>
-                            <option  value={"in_stock"}>In stock now</option>
+                            <option value={"new"}>New</option>
+                            <option value={"in_stock"}>In stock now</option>
                         </Form.Select>
                     </Form.Group>
                 </Modal.Body>

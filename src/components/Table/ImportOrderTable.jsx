@@ -39,7 +39,6 @@ export default function ImportOrderTable() {
       try {
         const res = await importOrderAPI.getAll()
         const startingImportOrders = res.data
-        console.log(startingImportOrders)
         setImportOrders(startingImportOrders)
         setIsLoading(false)
       } catch (error) {
@@ -157,7 +156,7 @@ export default function ImportOrderTable() {
                         {
                             importOrder.r_importOrderDetails.map(detail => (
                                 <option key={detail._id}>
-                                    {`${detail.r_productDetail.r_product.name} ${detail.r_productDetail.color} ${detail.r_productDetail.size} -- ${numberWithCommas(detail.price)} -- ${detail.quantity}`}
+                                    {`${detail.r_product.name} ${detail.size} -- ${numberWithCommas(detail.r_product.price)} -- ${detail.quantity}`}
                                 </option>
                             ))
                         }
@@ -166,17 +165,13 @@ export default function ImportOrderTable() {
                     <TableCell align="left">{importOrder.r_user.name}</TableCell>
 
                     <TableCell align="left" className="Details">
-                      {/* <DetailsDropdown
-                        clickedElement={importOrder}
-                        onUpdatingElementClick={(updatingImportOrder) => {
-                          setClickedElement(updatingImportOrder)
-                          setIsShowUpdateForm(true)
-                        }}
-                        onDeletingElementClick={(deletingImportOrder) => {
-                          setClickedElement(deletingImportOrder)
-                          setIsShowDeleteForm(true)
-                        }}
-                      /> */}
+                      <DetailsDropdown
+                        // clickedElement={importOrder}
+                        // onUpdatingElementClick={(updatingImportOrder) => {
+                        //   setClickedElement(updatingImportOrder)
+                        //   setIsShowUpdateForm(true)
+                        // }}
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
