@@ -114,7 +114,8 @@ export default function ProductTable() {
                   <TableCell>ID</TableCell>
                   <TableCell align="left">Name</TableCell>
                   <TableCell align="left">Price</TableCell>
-                  <TableCell align="left">description</TableCell>
+                  <TableCell align="left">Description</TableCell>
+                  <TableCell align="left">Image</TableCell>
                   <TableCell align="left">Category</TableCell>
                   <TableCell align="left">Trademark</TableCell>
                   <TableCell align="left"></TableCell>
@@ -125,21 +126,23 @@ export default function ProductTable() {
                   <TableRow
                     key={product._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    style={{ height: "100%" }}
+                    style={{ height: "100%", }}
                   >
                     <TableCell component="th" scope="row">
                       {product._id}
                     </TableCell>
                     <TableCell align="left">{product.name}</TableCell>
                     <TableCell align="left">{numberWithCommas(product.price)}</TableCell>
-                    <TableCell align="left">{product.name}</TableCell>
+                    <TableCell style={{width: "200px"}} align="left">{product.description.length > 100 ? product.description.slice(0,99) + "..." : product.description}</TableCell>
+                    <TableCell align="left">
+                      <img style={{width: "100px", height: "100px"}} src={`${window.env.CLOUDINARY_URL}${product?.imgs[0]}`} alt={product.name}/>
+                    </TableCell>
                     <TableCell align="left">{product.r_category.name}</TableCell>
                     <TableCell align="left">{product.r_trademark.name}</TableCell>
                     <TableCell align="left" className="Details">
                       <DetailsDropdown
                         clickedElement={product}
-            
-                        setUpdatingElement={(updatingProduct) => {
+                        onUpdatingElementClick={(updatingProduct) => {
                           setClickedElement(updatingProduct)
                           setIsShowUpdateForm(true)
                         }}

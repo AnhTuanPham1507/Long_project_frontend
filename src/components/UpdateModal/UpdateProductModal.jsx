@@ -84,14 +84,15 @@ function UpdateProductModal(props) {
                         <Form.Label>Description</Form.Label>
                         <Form.Control defaultValue={updatingProduct ? updatingProduct.description : ""} name="description" type="text" placeholder="Type product description" />
                     </Form.Group>
-
+                    <Form.Group className="mb-3">
+                        <Form.Label>Images</Form.Label>
+                        <Form.Control name="imgs" type="file" accept=".png, .jpg, .jpeg" multiple/>
+                    </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
-                        <Form.Select name="r_category" aria-label="Select Category">
+                        <Form.Select defaultValue={updatingProduct.r_category._id} name="r_category" aria-label="Select Category">
                             {
                                 categories.map(cate => {
-                                    if (updatingProduct !== null && updatingProduct.r_category._id === cate._id)
-                                        return (<option selected key={cate._id} value={cate._id}>{cate.name}</option>)
                                     return (<option key={cate._id} value={cate._id}>{cate.name}</option>)
                                 })
                             }
@@ -99,12 +100,10 @@ function UpdateProductModal(props) {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Trademark</Form.Label>
-                        <Form.Select name="r_trademark" aria-label="Select Trademark">
+                        <Form.Select defaultValue={ updatingProduct.r_trademark._id} name="r_trademark" aria-label="Select Trademark">
                             {
                                 trademarks.map(trademark => {
-                                    if (updatingProduct !== null && updatingProduct.r_trademark._id === trademark._id)
-                                        return (<option selected key={trademark._id} value={trademark._id}>{trademark.name}</option>)
-                                    return (<option key={trademark._id} value={trademark._id}>{trademark.name}</option>)
+                                    return <option key={trademark._id} value={trademark._id}>{trademark.name}</option>
                                 })
                             }
                         </Form.Select>

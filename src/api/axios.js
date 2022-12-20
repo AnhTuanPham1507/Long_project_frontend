@@ -30,20 +30,10 @@ const productAPI = {
         formData,
         {
             headers: {
-                'Content-Type': `application/json`
+                'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
             }
         }),
     update: (id, formData) => axi.put(`/product/${id}`,
-        formData,
-        {
-            headers: {
-                'Content-Type': `application/json`
-            }
-        }),
-}
-
-const productDetailAPI = {
-    update: (id, formData) => axi.put(`/productDetail/${id}`,
         formData,
         {
             headers: {
@@ -87,4 +77,4 @@ const importOrderAPI = {
 }
 
 
-export { categoryAPI, productAPI, trademarkAPI, userAPI, productDetailAPI, importOrderAPI };
+export { categoryAPI, productAPI, trademarkAPI, userAPI, importOrderAPI };

@@ -86,7 +86,10 @@ function CreateProductModal(props) {
                         <Form.Label>Description</Form.Label>
                         <Form.Control name="description" type="text" placeholder="Type product description" />
                     </Form.Group>
-
+                    <Form.Group className="mb-3">
+                        <Form.Label>Images</Form.Label>
+                        <Form.Control name="imgs" type="file" accept=".png, .jpg, .jpeg" multiple/>
+                    </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
                         <Form.Select name="r_category" aria-label="Select Category">
