@@ -15,7 +15,7 @@ import { importOrderAPI } from "../../api/axios";
 import { useEffect } from "react";
 import Loading from "../Loading/Loading";
 import axios from "axios";
-import { numberWithCommas } from "../../utils/FormatPrice";
+import numberWithCommas  from "../../utils/FormatPrice";
 import { Form } from "react-bootstrap";
 import CreateImportOrderModal from "../CreateModal/CreateImportOrderModal";
 import { useSelector } from "react-redux";

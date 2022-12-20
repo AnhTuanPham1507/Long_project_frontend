@@ -17,8 +17,7 @@ import UpdateProductModal from "../UpdateModal/UpdateProductModal";
 import { useEffect } from "react";
 import Loading from "../Loading/Loading";
 import axios from "axios";
-import { numberWithCommas } from "../../utils/FormatPrice";
-import ProductDetailModal from "../DetailsModal/ProductDetailModal";
+import numberWithCommas  from "../../utils/FormatPrice";
 
 
 export default function ProductTable() {
@@ -27,7 +26,6 @@ export default function ProductTable() {
 
   const [isShowCreateForm, setIsShowCreateForm] = useState(false)
   const [isShowUpdateForm, setIsShowUpdateForm] = useState(false)
-  const [isShowDetailModal, setIsShowDetailModal] = useState(false)
 
   const [clickedElement, setClickedElement] = useState(null)
 
@@ -92,24 +90,6 @@ export default function ProductTable() {
     }
   }
 
-  function handleUpdatingProductDetail(updatedProductDetail) {
-    const newProducts = products.map(
-      p => {
-        const oldProductDetailsLength = p.r_productDetails.length
-        if (oldProductDetailsLength <= 0)
-          return p
-        const filterProductDetails = p.r_productDetails.filter(detail => detail._id !== updatedProductDetail._id)
-        if (filterProductDetails.length <= oldProductDetailsLength) {
-          filterProductDetails.unshift(updatedProductDetail)
-          const updatedProduct = { ...p, r_productDetails: filterProductDetails }
-          setClickedElement(updatedProduct)
-          return updatedProduct
-        }
-        return p
-      })
-    setProducts(newProducts)
-  }
-
   return (
     isLoading ?
       <Loading /> :
@@ -158,10 +138,7 @@ export default function ProductTable() {
                     <TableCell align="left" className="Details">
                       <DetailsDropdown
                         clickedElement={product}
-                        onDetailClick={(product) => {
-                          setClickedElement(product)
-                          setIsShowDetailModal(true)
-                        }}
+            
                         setUpdatingElement={(updatingProduct) => {
                           setClickedElement(updatingProduct)
                           setIsShowUpdateForm(true)
@@ -188,12 +165,7 @@ export default function ProductTable() {
           updatingProduct={clickedElement}
           errorMessage={errorUpdatingMessage}
         />
-        <ProductDetailModal
-          onUpdatingProductDetail={handleUpdatingProductDetail}
-          isShow={isShowDetailModal}
-          product={clickedElement}
-          onClose={() => { setIsShowDetailModal(false) }}
-        />
+
       </>
   );
 }
