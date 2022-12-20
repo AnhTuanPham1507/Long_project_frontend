@@ -2,7 +2,7 @@ window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\Thanh\\AppData\\Roaming",
   "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_16280_CBUIELOEPAYLOXVB",
-  "CLOUDINARY_URL": "https://res.cloudinary.com/anhtuanpham1507/image/upload/v1668675442/",
+  "CLOUDINARY_URL": "https://res.cloudinary.com/imgactor/image/upload/v1670223001/",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "CommonProgramFiles": "C:\\Program Files\\Common Files",
