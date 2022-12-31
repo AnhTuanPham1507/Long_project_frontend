@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { Alert } from '@mui/material';
-import ORDERSTATUS from "../../enums/orderStatus"
 
 UpdateExportOrderModal.propTypes = {
     isShow: PropTypes.bool,
@@ -22,7 +21,7 @@ function UpdateExportOrderModal(props) {
     function handleUpdateOrder(e) {
         e.preventDefault()
         if (onUpdateExportOrder)
-        onUpdateExportOrder({status})
+        onUpdateExportOrder({ status})
     }
 
     return (

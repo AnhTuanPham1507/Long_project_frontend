@@ -49,9 +49,6 @@ export default function ExportOrderTable() {
     getstartingExportOrders()
   }, [])
 
-
-
-
   async function handleUpdateExportOrder(data) {
     setErrorUpdatingMessage(null)
     setIsShowUpdateForm(false)

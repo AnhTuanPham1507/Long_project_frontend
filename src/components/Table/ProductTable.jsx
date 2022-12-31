@@ -19,7 +19,6 @@ import Loading from "../Loading/Loading";
 import DeleteProductModal from"../DeleteModal/DeleteProductModal";
 import axios from "axios";
 import numberWithCommas  from "../../utils/FormatPrice";
-import { Dropdown } from "react-bootstrap";
 
 
 export default function ProductTable() {
@@ -94,38 +93,6 @@ export default function ProductTable() {
     }
   }
 
-  function handleUpdatingProductDetail(updatedProductDetail) {
-    const newProducts = products.map(
-      p => {
-        const oldProductDetailsLength = p.r_productDetails.length
-        if (oldProductDetailsLength <= 0)
-          return p
-        const filterProductDetails = p.r_productDetails.filter(detail => detail._id !== updatedProductDetail._id)
-        if (filterProductDetails.length <= oldProductDetailsLength) {
-          filterProductDetails.unshift(updatedProductDetail)
-          const updatedProduct = { ...p, r_productDetails: filterProductDetails }
-          setClickedElement(updatedProduct)
-          return updatedProduct
-        }
-        return p
-      })
-    setProducts(newProducts)
-  }
-
-  function handleCreatingProductDetail(createdProductDetail) {
-    const newProducts = products.map(
-      p => {
-        if(p._id === createdProductDetail.r_product){
-          const details = [...p.r_productDetails,createdProductDetail]
-          const newProduct = ({...p,r_productDetails: details})
-          setClickedElement(newProduct)
-          return newProduct
-        }
-        return p
-      })
-      setProducts(newProducts)
-  }
-
   async function handleDeleteProduct() {
     setIsShowDeleteForm(false)
     setIsLoading(true)
@@ -174,7 +141,6 @@ export default function ProductTable() {
                   <TableCell align="left">Image</TableCell>
                   <TableCell align="left">Category</TableCell>
                   <TableCell align="left">Trademark</TableCell>
-                  <TableCell align="left">Color-Size</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
@@ -194,37 +160,14 @@ export default function ProductTable() {
                     <TableCell align="left">
                       <img style={{width: "100px", height: "100px"}} src={`${window.env.CLOUDINARY_URL}${product?.imgs[0]}`} alt={product.name}/>
                     </TableCell>
-                    <TableCell align="left">{product.description}</TableCell>
                     <TableCell align="left">{product.r_category.name}</TableCell>
                     <TableCell align="left">{product.r_trademark.name}</TableCell>
-                    <TableCell align="left">
-                      {
-                        <Dropdown>
-                          <Dropdown.Toggle variant="success" id="dropdown-basic">
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu>
-                            {
-                              product.r_productDetails.map(detail => (
-                                <Dropdown.Item key={detail._id}>{`${detail.color}-${detail.size}`}</Dropdown.Item>
-                              ))
-                            }
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      }
-                    </TableCell>
                     <TableCell align="left" className="Details">
                       <DetailsDropdown
                         clickedElement={product}
-                        onDetailClick={(product) => {
-                          setClickedElement(product)
-                        }}
                         onUpdatingElementClick={(updatingProduct) => {
                         setClickedElement(updatingProduct)
                         setIsShowUpdateForm(true)
-                        }}
-                        setUpdatingElement={(updatingProduct) => {
-                          setClickedElement(updatingProduct)
-                          setIsShowUpdateForm(true)
                         }}
                         onDeletingElementClick={(deletingProduct) => {
                           setClickedElement(deletingProduct)
@@ -251,12 +194,6 @@ export default function ProductTable() {
           onUpdateProduct={handleUpdateProduct}
           updatingProduct={clickedElement}
           errorMessage={errorUpdatingMessage}
-        />
-        <DeleteProductModal
-          isShow={isShowDeleteForm}
-          onClose={() => { setIsShowDeleteForm(false) }}
-          onDeleteProduct={handleDeleteProduct}
-          deletingProduct={clickedElement}
         />
       </>
   );

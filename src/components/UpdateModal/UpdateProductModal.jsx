@@ -90,9 +90,9 @@ function UpdateProductModal(props) {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
-                        <Form.Select defaultValue={updatingProduct.r_category._id} name="r_category" aria-label="Select Category">
+                        <Form.Select defaultValue={updatingProduct?.r_category._id} name="r_category" aria-label="Select Category">
                             {
-                                categories.map(cate => {
+                                categories?.map(cate => {
                                     return (<option key={cate._id} value={cate._id}>{cate.name}</option>)
                                 })
                             }
@@ -100,9 +100,9 @@ function UpdateProductModal(props) {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Trademark</Form.Label>
-                        <Form.Select defaultValue={ updatingProduct.r_trademark._id} name="r_trademark" aria-label="Select Trademark">
+                        <Form.Select defaultValue={ updatingProduct?.r_trademark._id} name="r_trademark" aria-label="Select Trademark">
                             {
-                                trademarks.map(trademark => {
+                                trademarks?.map(trademark => {
                                     return <option key={trademark._id} value={trademark._id}>{trademark.name}</option>
                                 })
                             }
