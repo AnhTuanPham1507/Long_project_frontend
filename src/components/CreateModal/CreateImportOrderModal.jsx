@@ -32,7 +32,7 @@ function CreateImportOrderModal(props) {
                     r_product: detail._id,
                     quantity: detail.quantity,
                     price: detail.price,
-                    size: detail.size,
+                    size: Number(detail.size),
                     consignmentStatus: detail.consignmentStatus
                 }
             })
@@ -42,7 +42,7 @@ function CreateImportOrderModal(props) {
 
     function handleAddMoreDetail(detail) {
         const newDetails = [...details]
-        const foundDetail = newDetails.find(d => d._id === detail._id)
+        const foundDetail = newDetails.find(d => d._id === detail._id && d.size === detail.size)
         if (foundDetail)
             foundDetail.quantity += detail.quantity
         else

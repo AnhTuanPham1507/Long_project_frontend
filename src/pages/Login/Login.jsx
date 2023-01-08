@@ -16,7 +16,7 @@ function Login(props) {
             e.preventDefault()
             const formData = new FormData(e.target)
             const res = await userAPI.login(formData)
-            dispatch(create({ token: res.data.signedToken, isRememberMe: formData.get("isRememberMe") }))
+            dispatch(create( res.data))
             navigate("/dashboard")
         } catch (error) {
             alert(error.response.data.message)

@@ -119,11 +119,13 @@ export default function CategoryTable() {
         <div className="Table">
           <div className="Table__header">
             <h1>Category</h1>
+
             <Tooltip title="Create Category" onClick={() => { setIsShowCreateForm(true) }}>
               <IconButton>
                 <UilPen />
               </IconButton>
             </Tooltip>
+
           </div>
           <TableContainer
             component={Paper}
@@ -135,6 +137,7 @@ export default function CategoryTable() {
                   <TableCell>ID</TableCell>
                   <TableCell align="left">Name</TableCell>
                   <TableCell align="left">Image</TableCell>
+                  <TableCell align="left">TotalProductQuantity</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
@@ -150,6 +153,8 @@ export default function CategoryTable() {
                     </TableCell>
                     <TableCell align="left">{category.name}</TableCell>
                     <TableCell align="left"><img className="Table__img" src={`${window.env.CLOUDINARY_URL}${category.img}`} alt={`category`} /></TableCell>
+                    <TableCell align="left">{category.r_products[0].totalQuantity} sản phẩm</TableCell>
+
                     <TableCell align="left" className="Details">
                       <DetailsDropdown
                         clickedElement={category}

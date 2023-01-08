@@ -109,7 +109,7 @@ export default function ExportOrderTable() {
                       {exportOrder._id}
                     </TableCell>
                     <TableCell align="left">{exportOrder.name}</TableCell>
-                    <TableCell align="left">{exportOrder.address}</TableCell>
+                    <TableCell  align="left">{exportOrder.address}</TableCell>
                     <TableCell align="left">{exportOrder.phone}</TableCell>
                     <TableCell align="left">{exportOrder.email}</TableCell>
                     <TableCell align="left">{exportOrder.isPaid ? "Đã thanh toán" : "Chưa thanh toán"}</TableCell>
@@ -120,7 +120,7 @@ export default function ExportOrderTable() {
                         {
                             exportOrder.r_exportOrderDetails.map(detail => (
                                 <option key={detail._id}>
-                                    {`${detail.r_product.name} ${detail.size} -- ${numberWithCommas(detail.r_product.price)} -- ${detail.quantity}`}
+                                    {`${detail.r_product.name} ${detail.size} -- ${numberWithCommas(detail.r_product.price)} -- ${detail.quantity} đôi`}
                                 </option>
                             ))
                         }

@@ -19,6 +19,7 @@ import numberWithCommas  from "../../utils/FormatPrice";
 import { Form } from "react-bootstrap";
 import CreateImportOrderModal from "../CreateModal/CreateImportOrderModal";
 import { useSelector } from "react-redux";
+import { fDate } from "../../utils/formatTime";
 
 
 export default function ImportOrderTable() {
@@ -134,9 +135,10 @@ export default function ImportOrderTable() {
               <TableHead>
                 <TableRow>
                   <TableCell>ID</TableCell>
-                  <TableCell align="left">Total Price</TableCell>
+                  <TableCell align="left">Tổng tiền</TableCell>
                   <TableCell align="left">Details</TableCell>
                   <TableCell align="left">Creater</TableCell>
+                  <TableCell align="left">Ngày nhập hàng</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
@@ -163,6 +165,7 @@ export default function ImportOrderTable() {
                         </Form.Select>
                     </TableCell>
                     <TableCell align="left">{importOrder.r_user.name}</TableCell>
+                    <TableCell align="left">{fDate(importOrder.importedAt)}</TableCell>
 
                     <TableCell align="left" className="Details">
                       <DetailsDropdown

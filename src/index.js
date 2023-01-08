@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Category from './pages/Category';
 import ErrorPage from './pages/Error/Error';
 import Trademark from './pages/Trademark';
@@ -13,7 +13,10 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ImportOrder from './pages/ImportOrder';
 import ExportOrder from './pages/ExportOrder';
+import DashBoard from './pages/DashBoard';
+import Consignment from './pages/Consignment';
 
+  
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,10 +57,19 @@ const router = createBrowserRouter([
           },
           {
             path: "dashboard",
-            element: <></>
+            element: <DashBoard />
+          },
+          {
+            path: "consignment",
+            element: <Consignment />
+          },
+          {
+            path: "",
+            element: <Navigate to="/dashboard" />,
           },
         ]
       },
+      
     ]
   },
 ])

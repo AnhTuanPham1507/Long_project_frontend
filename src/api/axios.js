@@ -25,7 +25,7 @@ const categoryAPI = {
 }
 
 const productAPI = {
-    getAll: () => axi.get(`/product`),
+    getAll: () => axi.get(`/product/admin`),
     create: (formData) => axi.post(`/product`,
         formData,
         {
@@ -40,14 +40,7 @@ const productAPI = {
                 'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
             }
         }),
-    create: (formData) => axi.post(`/productDetail`,
-        formData,
-        {
-            headers: {
-                'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
-            }
-        }),
-    delete: (id) => axi.delete(`/productdetail/${id}`),
+    delete: (id) => axi.delete(`/product/${id}`),
 }
 
 
@@ -82,7 +75,7 @@ const userAPI = {
 
 const importOrderAPI = {
     getAll: () => axi.get(`/importOrder`),
-    create: (formData,token) => axi.post(`/importOrder`,
+    create: (formData, token) => axi.post(`/importOrder`,
         formData,
         {
             headers: {
@@ -111,4 +104,35 @@ const exportOrderAPI = {
         }),
 }
 
-export { categoryAPI, productAPI, trademarkAPI, userAPI, importOrderAPI, exportOrderAPI };
+const statisticAPI = {
+    getRevenue: () => axi.get(`/statistic/revenue`),
+    getTopSoldProducts: () => axi.get(`/statistic/topSoldProduct`)
+}
+
+const notificationAPI = {
+    getAll: () => axi.get(`/notification/admin`),
+    updateIsRead: (id) => axi.put(`/notification/${id}`)
+}
+
+const consignmentAPI = {
+    getAll: () => axi.get(`/consignment`),
+    updateStatus: ({ id, status }) => axi.put(`/consignment/${id}`, { status }, {
+        headers: {
+            'Content-Type': `application/json`,
+        },
+    })
+}
+
+const protectedAPI = {
+    checkRoute: (token) => axi.get(`/protected/route/admin`, {
+        headers: {
+            "x-access-token": token
+        }
+    }),
+    checkAction: (token, qPermissions) => axi.get(`/protected/action?${qPermissions}`, {
+        headers: {
+            "x-access-token": token
+        }
+    })
+}
+export { consignmentAPI, categoryAPI, productAPI, trademarkAPI, userAPI, importOrderAPI, exportOrderAPI, statisticAPI, notificationAPI, protectedAPI };

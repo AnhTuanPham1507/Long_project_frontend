@@ -11,7 +11,6 @@ CreateCategoryModal.propTypes = {
 
 function CreateCategoryModal(props) {
     const { isShow, onClose, onCreateCategory, errorMessage } = props
-
     function handleClose() {
         if (onClose)
             onClose()
@@ -37,7 +36,7 @@ function CreateCategoryModal(props) {
                 <Modal.Body>
                     <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control name="name" type="text" placeholder="Type catagory name" />
+                        <Form.Control  name="name" type="text" placeholder="Type catagory name" />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Image</Form.Label>

@@ -35,6 +35,11 @@ export const SidebarData = [
     heading: "Export Orders",
     to: "/exportOrders"
   },
+  {
+    icon: UilPackage,
+    heading: "Lô hàng",
+    to: "/consignment"
+  },
 ];
 
 export const ProductDetailColors = [
