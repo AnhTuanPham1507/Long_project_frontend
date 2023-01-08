@@ -25,7 +25,7 @@ function CreateCategoryModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Create Category</Modal.Title>
+                <Modal.Title>Tạo loại sản phẩm mới</Modal.Title>
             </Modal.Header>
             {errorMessage ?
                 errorMessage.split("---").map((err,index) => <Alert key={index} severity="error">{err}</Alert>) :
@@ -35,17 +35,17 @@ function CreateCategoryModal(props) {
 
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control  name="name" type="text" placeholder="Type catagory name" />
+                        <Form.Label>Tên</Form.Label>
+                        <Form.Control  name="name" type="text" placeholder="Nhập loại sản phẩm" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Image</Form.Label>
+                        <Form.Label>Hình ảnh</Form.Label>
                         <Form.Control name="img" type="file" accept=".png, .jpg, .jpeg" />
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Create
+                        Tạo loại sản phẩm
                     </Button>
                 </Modal.Footer>
             </Form>

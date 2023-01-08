@@ -35,11 +35,11 @@ function UpdateConsignmentsModal(props) {
   return (
     <Modal style={{ zIndex: 9999 }} show={isShow} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Cập nhật Lô hàng</Modal.Title>
+        <Modal.Title>Cập nhật lô hàng</Modal.Title>
       </Modal.Header>
       {
         ["comming_out_of_stock", "out_of_stock"].includes(activeConsignments?.status) ?
-          <h1>Bạn không thể thay đổi trạng thái lô hàng được nữa!</h1> :
+          <h1>Bạn không thể thay đổi trạng thái được nữa!</h1> :
           <Form onSubmit={handleUpdateConsignments}>
             <Modal.Body>
               <Form.Group className="mb-3">

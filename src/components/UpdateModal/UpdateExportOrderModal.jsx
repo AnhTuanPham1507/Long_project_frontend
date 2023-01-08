@@ -27,7 +27,7 @@ function UpdateExportOrderModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Update Status</Modal.Title>
+                <Modal.Title>Cập nhật trạng thái đơn hàng</Modal.Title>
             </Modal.Header>
             {errorMessage ?
                 errorMessage.split("---").map((err,index) => <Alert key={index} severity="error">{err}</Alert>) :

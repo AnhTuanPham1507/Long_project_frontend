@@ -26,7 +26,7 @@ function CreateTrademarkModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Create Trademark</Modal.Title>
+                <Modal.Title>Thêm thương hiệu mới</Modal.Title>
             </Modal.Header>
             {errorMessage ?
                 errorMessage.split("---").map((err,index) => <Alert key={index} severity="error">{err}</Alert>) :
@@ -36,17 +36,17 @@ function CreateTrademarkModal(props) {
 
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Tên thương hiệu</Form.Label>
                         <Form.Control name="name" type="text" placeholder="Type trademark name" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Image</Form.Label>
+                        <Form.Label>Hình ảnh</Form.Label>
                         <Form.Control name="img" type="file" accept=".png, .jpg, .jpeg" />
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Create
+                        Thêm thương hiệu
                     </Button>
                 </Modal.Footer>
             </Form>

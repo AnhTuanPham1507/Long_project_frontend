@@ -51,12 +51,12 @@ function CreateImportOrderDetailModaldal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Add More Products</Modal.Title>
+                <Modal.Title>Sản phẩm</Modal.Title>
             </Modal.Header>
             <Form onSubmit={handleAddMoreProducts}>
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Label>Product</Form.Label>
+                        <Form.Label>Sản phẩm</Form.Label>
                         <Form.Select onChange={(e) => { setIndexActiveProduct(e.target.value) }}>
                             {
                                 products.map((product, index) => (
@@ -66,7 +66,7 @@ function CreateImportOrderDetailModaldal(props) {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Choose Size</Form.Label>
+                        <Form.Label>Kích cỡ</Form.Label>
                         <Form.Select  onChange={(e) => { setSize(e.target.value) }}>
                             {
                                 Object.values(SIZEENUM).map((size,index) =>
@@ -76,24 +76,24 @@ function CreateImportOrderDetailModaldal(props) {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Quantity</Form.Label>
+                        <Form.Label>Số lượng</Form.Label>
                         <Form.Control min={1} type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Price</Form.Label>
+                        <Form.Label>Giá nhập</Form.Label>
                         <Form.Control min={1} type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Status</Form.Label>
+                        <Form.Label>Tình trạng</Form.Label>
                         <Form.Select onChange={(e) => { setConsignmentStatus(e.target.value) }}>
-                            <option value={"new"}>New</option>
-                            <option value={"in_stock"}>In stock now</option>
+                            <option value={"new"}>Hàng mới</option>
+                            <option value={"in_stock"}>Đang bán</option>
                         </Form.Select>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Add
+                        Thêm đơn nhập kho
                     </Button>
                 </Modal.Footer>
             </Form>

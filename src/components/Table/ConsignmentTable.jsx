@@ -68,7 +68,7 @@ export default function ConsignmentTable() {
         {/* Show Table  */}
         <div className="Table">
           <div className="Table__header">
-            <h1>Lô hàng</h1>
+            <h1>Kho hàng</h1>
           </div>
           <TableContainer
             component={Paper}

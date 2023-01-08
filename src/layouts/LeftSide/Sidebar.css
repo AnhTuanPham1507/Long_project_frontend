@@ -57,7 +57,8 @@ a{
 }
 
 .menu .menuItem:last-child {
-  position: absolute;
+  margin-top: 30px;
+  position: relative;
   bottom: 2.3rem;
   width: 100%;
 }

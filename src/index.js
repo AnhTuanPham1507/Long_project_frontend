@@ -15,6 +15,9 @@ import ImportOrder from './pages/ImportOrder';
 import ExportOrder from './pages/ExportOrder';
 import DashBoard from './pages/DashBoard';
 import Consignment from './pages/Consignment';
+import User from './pages/User'
+import Role from './pages/Role';
+import Permission from './pages/Permission';
 
   
 const router = createBrowserRouter([
@@ -62,6 +65,18 @@ const router = createBrowserRouter([
           {
             path: "consignment",
             element: <Consignment />
+          },
+          {
+            path: "user",
+            element: <User />
+          },
+          {
+            path: "role",
+            element: <Role />
+          },
+          {
+            path: "permission",
+            element: <Permission />
           },
           {
             path: "",

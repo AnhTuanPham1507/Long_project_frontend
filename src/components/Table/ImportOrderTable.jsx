@@ -120,7 +120,7 @@ export default function ImportOrderTable() {
         {/* Show Table  */}
         <div className="Table">
           <div className="Table__header">
-            <h1>Import Order</h1>
+            <h1>Nhập hàng</h1>
             <Tooltip title="Create ImportOrder" onClick={() => { setIsShowCreateForm(true) }}>
               <IconButton>
                 <UilPen />
@@ -136,8 +136,8 @@ export default function ImportOrderTable() {
                 <TableRow>
                   <TableCell>ID</TableCell>
                   <TableCell align="left">Tổng tiền</TableCell>
-                  <TableCell align="left">Details</TableCell>
-                  <TableCell align="left">Creater</TableCell>
+                  <TableCell align="left">Chi tiết</TableCell>
+                  <TableCell align="left">Người tạo đơn</TableCell>
                   <TableCell align="left">Ngày nhập hàng</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>

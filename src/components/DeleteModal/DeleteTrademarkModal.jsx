@@ -18,15 +18,15 @@ function DeleteTrademarkModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Delete Trademark: {deletingTrademark!= null ? deletingTrademark.name: ""}</Modal.Title>
+                <Modal.Title>Xóa thương hiệu: {deletingTrademark!= null ? deletingTrademark.name: ""}</Modal.Title>
             </Modal.Header>
             <Form onSubmit={handleDeleteTrademark}>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Save Changes
+                        Lưu thay đổi
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Close
+                        Đóng
                     </Button>
                 </Modal.Footer>
             </Form>

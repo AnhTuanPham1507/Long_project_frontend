@@ -120,7 +120,7 @@ export default function ProductTable() {
         {/* Show Table  */}
         <div className="Table">
           <div className="Table__header">
-            <h1>Product</h1>
+            <h1>Sản Phẩm</h1>
             <Tooltip title="Create Product" onClick={() => { setIsShowCreateForm(true) }}>
               <IconButton>
                 <UilPen />
@@ -135,12 +135,12 @@ export default function ProductTable() {
               <TableHead>
                 <TableRow>
                   <TableCell>ID</TableCell>
-                  <TableCell align="left">Name</TableCell>
-                  <TableCell align="left">Price</TableCell>
-                  <TableCell align="left">Description</TableCell>
-                  <TableCell align="left">Image</TableCell>
-                  <TableCell align="left">Category</TableCell>
-                  <TableCell align="left">Trademark</TableCell>
+                  <TableCell align="left">Tên sản phẩm</TableCell>
+                  <TableCell align="left">Giá bán</TableCell>
+                  <TableCell align="left">Mô tả</TableCell>
+                  <TableCell align="left">Hình ảnh</TableCell>
+                  <TableCell align="left">Loại sản phẩm</TableCell>
+                  <TableCell align="left">Thương hiệu</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
@@ -194,6 +194,12 @@ export default function ProductTable() {
           onUpdateProduct={handleUpdateProduct}
           updatingProduct={clickedElement}
           errorMessage={errorUpdatingMessage}
+        />
+        <DeleteProductModal
+          isShow={isShowDeleteForm}
+          onClose={() => { setIsShowDeleteForm(false) }}
+          onDeleteCategory={handleDeleteProduct}
+          deletingCategory={clickedElement}
         />
       </>
   );

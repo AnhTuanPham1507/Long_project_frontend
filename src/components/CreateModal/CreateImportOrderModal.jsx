@@ -55,7 +55,7 @@ function CreateImportOrderModal(props) {
         <>
             <Modal show={isShow} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create Import</Modal.Title>
+                    <Modal.Title>Thêm đơn nhập hàng</Modal.Title>
                 </Modal.Header>
                 {errorMessage ?
                     errorMessage.split("---").map((err, index) => <Alert key={index} severity="error">{err}</Alert>) :
@@ -66,7 +66,7 @@ function CreateImportOrderModal(props) {
                     <Modal.Body>
                         <Form.Group className="mb-3" >
                             <Form.Label>
-                                Products
+                                Sản phẩm
                             </Form.Label>
                             {
                                 details.map(detail => (
@@ -82,19 +82,19 @@ function CreateImportOrderModal(props) {
                             }
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>Imported At:</Form.Label>
+                            <Form.Label>Tạo vào:</Form.Label>
                             <Form.Control max={new Date()} type="date" value={importedAt} onChange={(e) => setImportedAt(e.target.value)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>TotalPrice: <strong>{numberWithCommas(totalPrice)}</strong></Form.Label>
+                            <Form.Label>Tổng giá nhập: <strong>{numberWithCommas(totalPrice)}</strong></Form.Label>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={() => setIsShowDetailForm(true)}>
-                            Add more Products
+                            Thêm sản phẩm nhập
                         </Button>
                         <Button variant="primary" type="submit">
-                            Create
+                            Tạo đơn nhập kho
                         </Button>
                     </Modal.Footer>
                 </Form>

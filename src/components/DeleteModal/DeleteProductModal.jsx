@@ -18,15 +18,15 @@ function DeleteProductModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Delete Category: {deletingProduct!= null ? deletingProduct.name: ""}</Modal.Title>
+                <Modal.Title>Xóa sản phẩm: {deletingProduct!= null ? deletingProduct.name: ""}</Modal.Title>
             </Modal.Header>
             <Form onSubmit={handleDeleteProduct}>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Save Changes
+                        Lưu thay đổi
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Close
+                        Đóng
                     </Button>
                 </Modal.Footer>
             </Form>

@@ -6,7 +6,7 @@ const RightSide = () => {
   return (
     <div className="RightSide">
       <div>
-        <h2> Notifications</h2>
+        <h2> Thông báo</h2>
         <Updates />
       </div>
     </div>

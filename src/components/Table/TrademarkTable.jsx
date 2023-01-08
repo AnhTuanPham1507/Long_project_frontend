@@ -118,7 +118,7 @@ export default function TrademarkTable() {
         {/* Show Table  */}
         <div className="Table">
           <div className="Table__header">
-            <h1>Trademark</h1>
+            <h1>Thương hiệu</h1>
             <Tooltip title="Create Trademark" onClick={() => { setIsShowCreateForm(true) }}>
               <IconButton>
                 <UilPen />
@@ -133,8 +133,8 @@ export default function TrademarkTable() {
               <TableHead>
                 <TableRow>
                   <TableCell>ID</TableCell>
-                  <TableCell align="left">Name</TableCell>
-                  <TableCell align="left">Image</TableCell>
+                  <TableCell align="left">Tên thương hiệu</TableCell>
+                  <TableCell align="left">Hình ảnh</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>

@@ -7,38 +7,53 @@ import {
 export const SidebarData = [
   {
     icon: UilChart,
-    heading: "Dashboard",
+    heading: "Thống kê",
     to: "/dashboard"
   },
   {
     icon: UilPackage,
-    heading: "Categories",
+    heading: "Loại sản phẩm",
     to: "/categories"
   },
   {
     icon: UilPackage,
-    heading: "Trademarks",
+    heading: "Thương hiệu",
     to: "/trademarks"
   },
   {
     icon: UilPackage,
-    heading: "Products",
+    heading: "Sản phẩm",
     to: "/products"
   },
   {
     icon: UilPackage,
-    heading: "Import Orders",
+    heading: "Nhập kho",
     to: "/importOrders"
   },
   {
     icon: UilPackage,
-    heading: "Export Orders",
+    heading: "Đơn hàng",
     to: "/exportOrders"
   },
   {
     icon: UilPackage,
-    heading: "Lô hàng",
+    heading: "Kho hàng",
     to: "/consignment"
+  },
+  {
+    icon: UilPackage,
+    heading: "Người dùng",
+    to: "/user"
+  },
+  {
+    icon: UilPackage,
+    heading: "Các vai trò",
+    to: "/role"
+  },
+  {
+    icon: UilPackage,
+    heading: "Các quyền",
+    to: "/permission"
   },
 ];
 

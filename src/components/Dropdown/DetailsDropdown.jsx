@@ -55,8 +55,8 @@ function DetailsDropdown(props) {
                 }}
             >
                 {onDetailClick && <MenuItem onClick={handleDetailClick}>Details</MenuItem>}
-                <MenuItem onClick={handleUpdateClick}>Update</MenuItem>
-                <MenuItem onClick={handleDeleteClick}>Delete</MenuItem>
+                <MenuItem onClick={handleUpdateClick}>Cập nhật</MenuItem>
+                <MenuItem onClick={handleDeleteClick}>Xóa</MenuItem>
             </Menu>
         </div>
     );

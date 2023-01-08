@@ -70,8 +70,9 @@ const userAPI = {
             headers: {
                 'Content-Type': `application/json`
             }
-        })
-}
+        }),
+    getAll: () => axi.get("/user/all")
+} 
 
 const importOrderAPI = {
     getAll: () => axi.get(`/importOrder`),
@@ -123,6 +124,14 @@ const consignmentAPI = {
     })
 }
 
+const roleAPI = {
+    getAll: () => axi.get(`/role`),
+}
+
+const permissionAPI = {
+    getAll: () => axi.get(`/permission`),
+}
+
 const protectedAPI = {
     checkRoute: (token) => axi.get(`/protected/route/admin`, {
         headers: {
@@ -135,4 +144,4 @@ const protectedAPI = {
         }
     })
 }
-export { consignmentAPI, categoryAPI, productAPI, trademarkAPI, userAPI, importOrderAPI, exportOrderAPI, statisticAPI, notificationAPI, protectedAPI };
+export { roleAPI, permissionAPI, consignmentAPI, categoryAPI, productAPI, trademarkAPI, userAPI, importOrderAPI, exportOrderAPI, statisticAPI, notificationAPI, protectedAPI };

@@ -59,7 +59,7 @@ const Sidebar = () => {
           })}
           {/* signoutIcon */}
           <div className="menuItem" onClick={logOut}>
-            <UilSignOutAlt /> Log out
+            <UilSignOutAlt /> Đăng xuất
           </div>
         </div>
       </motion.div>

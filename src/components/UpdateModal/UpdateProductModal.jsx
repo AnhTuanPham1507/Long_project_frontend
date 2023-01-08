@@ -64,7 +64,7 @@ function UpdateProductModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Update Product</Modal.Title>
+                <Modal.Title>Cập nhật sản phẩm</Modal.Title>
             </Modal.Header>
             {errorMessage ?
                 errorMessage.split("---").map((err, index) => <Alert key={index} severity="error">{err}</Alert>) :
@@ -73,23 +73,23 @@ function UpdateProductModal(props) {
             <Form onSubmit={handleUpdateProduct} encType="multipart/form-data">
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control defaultValue={updatingProduct ? updatingProduct.name : ""} name="name" type="text" placeholder="Type product name" />
+                        <Form.Label>Tên sản phẩm</Form.Label>
+                        <Form.Control defaultValue={updatingProduct ? updatingProduct.name : ""} name="name" type="text" placeholder="Nhập tên sản phẩm" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Price</Form.Label>
-                        <Form.Control defaultValue={updatingProduct ? updatingProduct.price : 2} name="price" type="number" min="1" placeholder="Type product price (VND)" />
+                        <Form.Label>Giá bán</Form.Label>
+                        <Form.Control defaultValue={updatingProduct ? updatingProduct.price : 2} name="price" type="number" min="1" placeholder="Nhập giá bán (VND)" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control defaultValue={updatingProduct ? updatingProduct.description : ""} name="description" type="text" placeholder="Type product description" />
+                        <Form.Label>Mô tả</Form.Label>
+                        <Form.Control defaultValue={updatingProduct ? updatingProduct.description : ""} name="description" type="text" placeholder="Nhập mô tả sản phẩm" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Images</Form.Label>
+                        <Form.Label>Hình ảnh</Form.Label>
                         <Form.Control name="imgs" type="file" accept=".png, .jpg, .jpeg" multiple/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Category</Form.Label>
+                        <Form.Label>Loại sản phẩm</Form.Label>
                         <Form.Select defaultValue={updatingProduct?.r_category._id} name="r_category" aria-label="Select Category">
                             {
                                 categories?.map(cate => {
@@ -99,7 +99,7 @@ function UpdateProductModal(props) {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Trademark</Form.Label>
+                        <Form.Label>Thương hiệu</Form.Label>
                         <Form.Select defaultValue={ updatingProduct?.r_trademark._id} name="r_trademark" aria-label="Select Trademark">
                             {
                                 trademarks?.map(trademark => {
@@ -111,7 +111,7 @@ function UpdateProductModal(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Save Changes
+                        Lưu thay đổi
                     </Button>
                 </Modal.Footer>
             </Form>

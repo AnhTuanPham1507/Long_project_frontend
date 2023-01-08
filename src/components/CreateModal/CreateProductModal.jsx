@@ -65,7 +65,7 @@ function CreateProductModal(props) {
     return (
         <Modal show={isShow} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Create Product</Modal.Title>
+                <Modal.Title>Tạo sản phẩm mới</Modal.Title>
             </Modal.Header>
             {errorMessage ?
                 errorMessage.split("---").map((err, index) => <Alert key={index} severity="error">{err}</Alert>) :
@@ -75,23 +75,23 @@ function CreateProductModal(props) {
 
                 <Modal.Body>
                     <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Tên sản phẩm</Form.Label>
                         <Form.Control name="name" type="text" placeholder="Type product name" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Price</Form.Label>
+                        <Form.Label>Giá bán</Form.Label>
                         <Form.Control name="price" type="number" min="1" placeholder="Type product price (VND)" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Mô tả</Form.Label>
                         <Form.Control name="description" type="text" placeholder="Type product description" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Images</Form.Label>
+                        <Form.Label>Hình ảnh</Form.Label>
                         <Form.Control name="imgs" type="file" accept=".png, .jpg, .jpeg" multiple/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Category</Form.Label>
+                        <Form.Label>Loại sản phẩm</Form.Label>
                         <Form.Select name="r_category" aria-label="Select Category">
                             {
                                 categories.map(cate => (
@@ -101,7 +101,7 @@ function CreateProductModal(props) {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Trademark</Form.Label>
+                        <Form.Label>Thương hiệu</Form.Label>
                         <Form.Select name="r_trademark" aria-label="Select Trademark">
                             {
                                 trademarks.map(trademark => (
@@ -113,7 +113,7 @@ function CreateProductModal(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">
-                        Create
+                        Tạo sản phẩm
                     </Button>
                 </Modal.Footer>
             </Form>

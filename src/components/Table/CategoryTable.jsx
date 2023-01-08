@@ -135,9 +135,9 @@ export default function CategoryTable() {
               <TableHead>
                 <TableRow>
                   <TableCell>ID</TableCell>
-                  <TableCell align="left">Name</TableCell>
-                  <TableCell align="left">Image</TableCell>
-                  <TableCell align="left">TotalProductQuantity</TableCell>
+                  <TableCell align="left">Tên loại sản phẩm</TableCell>
+                  <TableCell align="left">Hình ảnh</TableCell>
+                  <TableCell align="left">Tổng số lượng sản phẩm</TableCell>
                   <TableCell align="left"></TableCell>
                 </TableRow>
               </TableHead>
