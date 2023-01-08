@@ -76,7 +76,7 @@ function CreateImportOrderModal(props) {
                                         id={`${detail._id}`}
                                         label={`${detail.name} - Quantity: ${detail.quantity} - Price: ${numberWithCommas(detail.price)}`}
                                         defaultChecked={true}
-                                        onChange={(e) => setDetails(details.filter(d => d._id != detail._id))}
+                                        onChange={(e) => setDetails(details.filter(d => d._id !== detail._id))}
                                     />
                                 ))
                             }

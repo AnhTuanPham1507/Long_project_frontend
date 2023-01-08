@@ -29,10 +29,8 @@ export default function ImportOrderTable() {
 
   const [isShowCreateForm, setIsShowCreateForm] = useState(false)
 
-  const [clickedElement, setClickedElement] = useState(null)
 
   const [errorCreatingMessage, setErrorCreatingMessage] = useState(null)
-  const [errorUpdatingMessage, setErrorUpdatingMessage] = useState(null)
 
   useEffect(() => {
     setIsLoading(true)
@@ -70,48 +68,6 @@ export default function ImportOrderTable() {
       setIsLoading(false)
     }
   }
-
-//   async function handleUpdateImportOrder(form) {
-//     setErrorUpdatingMessage(null)
-//     setIsShowUpdateForm(false)
-//     setIsLoading(true)
-//     try {
-//       const formData = new FormData(form)
-//       const res = await importOrderAPI.update(clickedElement._id, formData)
-//       const newImportOrders = importOrders.filter(importOrder => importOrder._id !== clickedElement._id)
-//       newImportOrders.push(res.data)
-//       setImportOrders(newImportOrders)
-//     } catch (error) {
-//       if (axios.isAxiosError(error)) {
-//         setErrorUpdatingMessage(error.response.data.message)
-//         setIsShowUpdateForm(true)
-//         return
-//       }
-//       alert(error.toString())
-//     } finally {
-//       setIsLoading(false)
-//     }
-//   }
-
-//   async function handleDeleteImportOrder() {
-//     setIsShowDeleteForm(false)
-//     setIsLoading(true)
-//     try {
-//       await importOrderAPI.delete(clickedElement._id)
-//       const newImportOrders = importOrders.filter(importOrder => importOrder._id !== clickedElement._id)
-//       setImportOrders(newImportOrders)
-//       setClickedElement(null)
-//     } catch (error) {
-//       if (axios.isAxiosError(error)) {
-//         console.log(error)
-//         alert(error.response.data.message)
-//         return
-//       }
-//       alert(error.toString())
-//     } finally {
-//       setIsLoading(false)
-//     }
-//   }
 
   return (
     isLoading ?

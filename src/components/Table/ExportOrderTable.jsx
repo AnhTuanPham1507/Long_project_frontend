@@ -8,8 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./Table.css";
 import DetailsDropdown from "../Dropdown/DetailsDropdown";
-import { IconButton, Tooltip } from "@mui/material";
-import { UilPen } from '@iconscout/react-unicons'
 import { useState } from "react";
 import { exportOrderAPI } from "../../api/axios";
 import { useEffect } from "react";
@@ -18,20 +16,16 @@ import axios from "axios";
 import numberWithCommas  from "../../utils/FormatPrice";
 import { Form } from "react-bootstrap";
 import UpdateExportOrderModal from "../UpdateModal/UpdateExportOrderModal";
-import { useSelector } from "react-redux";
 import ORDERSTATUS from "../../enums/orderStatus"
 
 
 export default function ExportOrderTable() {
-  const token = useSelector(state => state.token.value)
   const [isLoading, setIsLoading] = useState(false)
   const [exportOrders, setExportOrders] = useState([])
   const [isShowUpdateForm, setIsShowUpdateForm] = useState(false)
-  const [isShowDeleteForm, setIsShowDeleteForm] = useState(false)
 
   const [clickedElement, setClickedElement] = useState(null)
 
-  const [errorCreatingMessage, setErrorCreatingMessage] = useState(null)
   const [errorUpdatingMessage, setErrorUpdatingMessage] = useState(null)
 
   useEffect(() => {
